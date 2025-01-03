@@ -157,3 +157,85 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+// Get modal and elements
+// Get modal and elements
+// Get modal and elements
+/*const modal = document.getElementById("blogModal");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
+
+// Add click events to blog items
+document.querySelectorAll(".blog-post-item a").forEach((postLink) => {
+  postLink.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    // Find the blog content
+    const blogContent = this.parentNode.querySelector(".blog-content");
+    const blogImage = parent.querySelector("img"); // for image
+    
+    if (blogContent && blogImage) {
+      // Populate modal content
+      modalContent.innerHTML = blogContent.innerHTML;
+
+      // Show modal
+      modal.style.display = "block";
+    } else {
+      console.error("Blog content not found.");
+    }
+  });
+});
+
+// Close modal
+closeModal.onclick = () => {
+  modal.style.display = "none";
+};
+
+// Close modal on outside click
+window.onclick = (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};*/
+
+const modal = document.getElementById("blogModal");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
+
+// Add click events to blog items
+document.querySelectorAll(".blog-post-item a").forEach((postLink) => {
+  postLink.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    // Find the blog content and image
+    const blogContent = this.parentNode.querySelector(".blog-content");
+    const blogImage = this.parentNode.querySelector("img"); // Corrected 'parent' to 'this.parentNode'
+    
+    if (blogContent && blogImage) {
+      // Populate modal content with image and blog content
+      modalContent.innerHTML = `
+        <img src="${blogImage.src}" alt="${blogImage.alt}" style="max-width: 100%; border-radius: 10px; margin-bottom: 15px;">
+        ${blogContent.innerHTML}
+      `;
+
+      // Show modal
+      modal.style.display = "block";
+    } else {
+      console.error("Blog content or image not found.");
+    }
+  });
+});
+
+// Close modal
+closeModal.onclick = () => {
+  modal.style.display = "none";
+};
+
+// Close modal on outside click
+window.onclick = (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
+
